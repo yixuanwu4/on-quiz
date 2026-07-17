@@ -1,5 +1,18 @@
 
 {
   "name": "on-quiz",
-  "image": "mcr.microsoft.com/devcontainers/typescript-node:4-24-trixie"
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:4-24-trixie",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Vue.volar",
+        "vitest.explorer",
+        "ms-playwright.playwright",
+        "dbaeumer.vscode-eslint",
+        "EditorConfig.EditorConfig",
+        "oxc.oxc-vscode",
+        "esbenp.prettier-vscode"
+      ]
+    }
+  }
 }
