@@ -15,6 +15,11 @@ const router = createRouter({
       component: () => import('../layouts/QuizLayout.vue'),
       children: [
         {
+          path: 'loading',
+          name: 'loading',
+          component: () => import('../views/LoadingView.vue'),
+        },
+        {
           path: 'result',
           name: 'result',
           component: () => import('../views/ResultView.vue'),

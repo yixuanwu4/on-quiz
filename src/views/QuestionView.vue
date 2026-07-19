@@ -26,9 +26,9 @@ function answerQuestion(answer: Answer) {
   // Store the answer for the current question
   quizAnswersContext?.setAnswer(question.value!.id, question.value!.answers.indexOf(answer))
 
-  // Navigate to the result view if there is no next question
+  // Navigate to the loading view if there is no next question
   if (answer.nextQuestion === '') {
-    void router.push({ name: 'result' })
+    void router.push({ name: 'loading' })
     return
   }
 
