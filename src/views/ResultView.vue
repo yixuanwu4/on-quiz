@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import ShoeCard from '@/components/ShoeCard.vue'
+import IconRestart from '@/components/icons/IconRestart.vue'
 import { quizContextKey, quizResultContextKey } from '@/quiz'
+import { RouterLink } from 'vue-router'
 import { computed, inject } from 'vue'
 
 const quizContext = inject(quizContextKey)
@@ -20,7 +22,6 @@ const recommendedShoes = computed(() => {
 
   return Object.entries(result)
     .sort(([, firstRating], [, secondRating]) => secondRating - firstRating)
-    .slice(0, 2)
     .map(([shoeId]) => quizContext?.quiz.value?.shoes.find((shoe) => shoe.id === shoeId))
 })
 const recommendationCopy = computed(() => {
@@ -28,39 +29,59 @@ const recommendationCopy = computed(() => {
     return 'Based on your selection we have found your shoe recommendations.'
   }
 
-  return `Based on your selection we've decided on the ${recommendedShoes.value.map((shoe) => shoe?.name).join(' and ')}! Enjoy the 30 day trial!`
+  return `Based on your selection we've decided on the ${recommendedShoes.value
+    .slice(0, 2)
+    .map((shoe) => shoe?.name)
+    .join(' and ')}! Enjoy the 30 day trial!`
 })
+
+const recommendationSections = computed(() => [
+  {
+    key: 'recommended',
+    title: undefined,
+    shoes: recommendedShoes.value.slice(0, 2),
+  },
+  {
+    key: 'similar-profiles',
+    title: 'Similar Profiles',
+    shoes: recommendedShoes.value.slice(2, 3),
+  },
+])
 </script>
 
 <template>
   <section>
     <h1>Congratulations!</h1>
     <p>{{ recommendationCopy }}</p>
-    <ol>
-      <template v-for="(shoe, index) in recommendedShoes" :key="index">
-        <li>
-          <ShoeCard>
-            <template v-slot:header>
-              <img :src="getShoeImageUrl(shoe?.id)" :alt="shoe?.name" />
-            </template>
-            <template v-slot:content>
-              <h2>{{ shoe?.name }}</h2>
-              <p class="description">
-                Your perfect partner in the world's lightest fully-cushioned shoe for Running
-                Remixed.
-              </p>
-              <p class="meta">200 CHF | Neon & Grey</p>
-              <img
-                src="@/assets/colorselection.png"
-                alt="Color selection"
-                class="color-selection"
-              />
-            </template>
-          </ShoeCard>
-          <a href="https://on.com" class="button secondary">Shop now</a>
-        </li>
-      </template>
-    </ol>
+    <template v-for="section in recommendationSections" :key="section.key">
+      <h2 v-if="section.title">{{ section.title }}</h2>
+      <ol>
+        <template v-for="(shoe, index) in section.shoes" :key="shoe?.id ?? index">
+          <li>
+            <ShoeCard>
+              <template #header>
+                <img :src="getShoeImageUrl(shoe?.id)" :alt="shoe?.name" />
+              </template>
+              <template #content>
+                <h2>{{ shoe?.name }}</h2>
+                <p class="description">
+                  Your perfect partner in the world's lightest fully-cushioned shoe for Running
+                  Remixed.
+                </p>
+                <p class="meta">200 CHF | Neon & Grey</p>
+                <img
+                  src="@/assets/colorselection.png"
+                  alt="Color selection"
+                  class="color-selection"
+                />
+              </template>
+            </ShoeCard>
+            <a href="https://on.com" class="button secondary">Shop now</a>
+          </li>
+        </template>
+      </ol>
+    </template>
+    <RouterLink to="/quiz" class="restart"><IconRestart />Restart Quiz</RouterLink>
   </section>
 </template>
 
@@ -90,6 +111,12 @@ section {
         width: 6rem;
       }
     }
+  }
+
+  .restart {
+    align-self: center;
+    color: var(--color-gray-text);
+    text-decoration: none;
   }
 }
 </style>

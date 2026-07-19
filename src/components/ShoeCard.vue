@@ -20,7 +20,7 @@
     padding: 2rem 0;
 
     :global(img) {
-      max-width: 40%;
+      max-width: clamp(20rem, 30rem, 60%);
       height: auto;
     }
   }

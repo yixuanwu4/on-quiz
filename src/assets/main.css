@@ -3,9 +3,9 @@
 #app {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: min(100%, 1080px);
   flex-grow: 1;
-  padding: 0 clamp(1rem, calc((100% - 1080px) / 2), 20%);
+  padding: 0 clamp(0, calc((100% - 1080px) / 2), 20%);
 }
 
 main {

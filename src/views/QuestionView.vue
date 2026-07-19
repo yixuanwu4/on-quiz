@@ -82,4 +82,21 @@ div {
     cursor: pointer;
   }
 }
+
+@media (max-width: 640px) {
+  section {
+    margin-block-start: 5rem;
+    gap: 5rem;
+  }
+
+  div {
+    flex-direction: column;
+    gap: 1rem;
+
+    button {
+      padding: 1rem 2rem;
+      font-size: 1.4rem;
+    }
+  }
+}
 </style>

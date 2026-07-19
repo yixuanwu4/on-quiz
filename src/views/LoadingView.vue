@@ -82,4 +82,9 @@ section {
   justify-content: center;
   flex-grow: 1;
 }
+
+p {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+}
 </style>
