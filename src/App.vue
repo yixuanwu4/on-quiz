@@ -23,6 +23,7 @@ header {
   align-items: center;
   background-color: var(--color-header-background);
   padding: 1rem;
+  border-block-end: 4px solid var(--color-white-background);
 
   #burger {
     display: flex;

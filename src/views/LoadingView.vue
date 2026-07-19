@@ -9,8 +9,8 @@ import {
   type QuizResult,
 } from '@/quiz'
 
-const MIN_LOADING_TIME = 20000
-const MAX_LOADING_TIME = 60000
+const MIN_LOADING_TIME = 2000
+const MAX_LOADING_TIME = 5000
 
 const router = useRouter()
 const quizContext = inject(quizContextKey)

@@ -21,6 +21,7 @@ const answers = ref<QuizAnswers>({})
 const result = ref<QuizResult>({})
 
 const firstQuestion = computed(() => quiz.value?.questions[0] ?? null)
+const isResultPage = computed(() => route.name === 'result')
 
 function setAnswer(questionId: number, answerIndex: number) {
   answers.value = {
@@ -73,11 +74,11 @@ watch([isLoading, firstQuestion, () => route.name], ([loading, question, routeNa
 </script>
 
 <template>
-  <main>
+  <main :class="{ 'result-page': isResultPage }">
     <p v-if="isLoading">Loading quiz...</p>
     <p v-else-if="error">{{ error }}</p>
     <template v-else>
-      <p class="hint">Try On Quiz<br />30 Days Risk Free</p>
+      <p class="hint" v-if="!isResultPage">Try On Quiz<br />30 Days Risk Free</p>
       <RouterView />
     </template>
   </main>
@@ -92,6 +93,12 @@ main {
   color: var(--color-white-text);
   padding-block-start: 2rem;
 }
+
+main.result-page {
+  background-color: var(--color-header-background);
+  color: var(--color-black-text);
+}
+
 .hint {
   text-align: center;
 }
