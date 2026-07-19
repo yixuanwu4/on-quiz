@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router'
+import { RouterLink, RouterView } from 'vue-router'
 import IconBurger from './components/icons/IconBurger.vue'
 import IconBrand from './components/icons/IconBrand.vue'
 </script>
@@ -10,7 +10,7 @@ import IconBrand from './components/icons/IconBrand.vue'
       <IconBurger />
     </div>
     <div id="brand">
-      <a href="/"><IconBrand /></a>
+      <RouterLink :to="{ name: 'home' }"><IconBrand /></RouterLink>
     </div>
   </header>
 
