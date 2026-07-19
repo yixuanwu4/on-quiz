@@ -1,11 +1,15 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { RouterView } from 'vue-router'
+import IconBurger from './components/icons/IconBurger.vue'
+import IconBrand from './components/icons/IconBrand.vue'
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <header><IconBurger /><IconBrand /></header>
+
+  <RouterView />
+
+  <footer>Footer</footer>
 </template>
 
 <style scoped></style>
