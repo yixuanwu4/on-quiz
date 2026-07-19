@@ -42,6 +42,14 @@ function storeQuizValue(key: string, value: Record<string, number>) {
   window.localStorage.setItem(key, JSON.stringify(value))
 }
 
+function getQuizDataUrl() {
+  const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`
+
+  return new URL('data.json', new URL(baseUrl, window.location.origin)).toString()
+}
+
 const answers = ref<QuizAnswers>(getStoredQuizValue<QuizAnswers>(QUIZ_ANSWERS_STORAGE_KEY))
 const result = ref<QuizResult>(getStoredQuizValue<QuizResult>(QUIZ_RESULT_STORAGE_KEY))
 
@@ -70,7 +78,7 @@ async function loadQuiz() {
   error.value = null
 
   try {
-    const response = await fetch(`${import.meta.env.BASE_URL}data.json`)
+    const response = await fetch(getQuizDataUrl())
 
     if (!response.ok) {
       throw new Error(`Failed to load quiz data (${response.status})`)
