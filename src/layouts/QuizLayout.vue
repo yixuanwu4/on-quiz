@@ -3,7 +3,7 @@ import { computed, provide, ref, watch } from 'vue'
 import { RouterView, useRoute, useRouter } from 'vue-router'
 
 import type { Quiz } from '@/api'
-import { quizContextKey } from '@/quiz'
+import { quizAnswersContextKey, quizContextKey, type QuizAnswers } from '@/quiz'
 
 const route = useRoute()
 const router = useRouter()
@@ -11,10 +11,19 @@ const router = useRouter()
 const quiz = ref<Quiz | null>(null)
 const isLoading = ref(true)
 const error = ref<string | null>(null)
+const answers = ref<QuizAnswers>({})
 
 const firstQuestion = computed(() => quiz.value?.questions[0] ?? null)
 
+function setAnswer(questionId: number, answerIndex: number) {
+  answers.value = {
+    ...answers.value,
+    [questionId]: answerIndex,
+  }
+}
+
 provide(quizContextKey, { quiz, isLoading, error })
+provide(quizAnswersContextKey, { answers, setAnswer })
 
 async function loadQuiz() {
   isLoading.value = true

@@ -8,3 +8,15 @@ export type QuizContext = {
 }
 
 export const quizContextKey = Symbol('quiz-context') as InjectionKey<QuizContext>
+
+
+export type QuizAnswers = {
+  [questionId: number]: number
+}
+
+export type QuizAnswersContext = {
+  answers: Ref<QuizAnswers>
+  setAnswer: (questionId: number, answerIndex: number) => void
+}
+
+export const quizAnswersContextKey = Symbol('quiz-answers-context') as InjectionKey<QuizAnswersContext>

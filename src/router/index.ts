@@ -10,15 +10,15 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      path: '/quiz/result',
-      name: 'result',
-      component: () => import('../views/ResultView.vue'),
-    },
-    {
       path: '/quiz',
       name: 'quiz',
       component: () => import('../layouts/QuizLayout.vue'),
       children: [
+        {
+          path: 'result',
+          name: 'result',
+          component: () => import('../views/ResultView.vue'),
+        },
         {
           path: ':questionId',
           name: 'question',
