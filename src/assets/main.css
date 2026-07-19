@@ -1,1 +1,14 @@
 @import './base.css';
+
+#app {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex-grow: 1;
+  padding: 0 clamp(1rem, calc((100% - 1080px) / 2), 20%);
+}
+
+main {
+  flex-grow: 1;
+  padding: 1rem;
+}

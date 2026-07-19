@@ -33,7 +33,7 @@ const recommendationCopy = computed(() => {
 </script>
 
 <template>
-  <main>
+  <section>
     <h1>Congratulations!</h1>
     <p>{{ recommendationCopy }}</p>
     <ol>
@@ -45,10 +45,51 @@ const recommendationCopy = computed(() => {
             </template>
             <template v-slot:content>
               <h2>{{ shoe?.name }}</h2>
+              <p class="description">
+                Your perfect partner in the world's lightest fully-cushioned shoe for Running
+                Remixed.
+              </p>
+              <p class="meta">200 CHF | Neon & Grey</p>
+              <img
+                src="@/assets/colorselection.png"
+                alt="Color selection"
+                class="color-selection"
+              />
             </template>
           </ShoeCard>
+          <a href="https://on.com" class="button secondary">Shop now</a>
         </li>
       </template>
     </ol>
-  </main>
+  </section>
 </template>
+
+<style scoped>
+section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  ol {
+    padding: 0;
+    list-style: none;
+
+    li {
+      display: flex;
+      flex-direction: column;
+
+      .button {
+        align-self: center;
+      }
+
+      .description {
+        color: var(--color-gray-text);
+      }
+
+      .color-selection {
+        width: 6rem;
+      }
+    }
+  }
+}
+</style>

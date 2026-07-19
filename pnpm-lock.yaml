@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@fontsource/sanchez':
+        specifier: ^5.2.8
+        version: 5.2.8
       vue:
         specifier: ^3.5.40
         version: 3.5.40(typescript@6.0.3)
@@ -356,6 +359,9 @@ packages:
     peerDependenciesMeta:
       '@noble/hashes':
         optional: true
+
+  '@fontsource/sanchez@5.2.8':
+    resolution: {integrity: sha512-/fl80U00yxuVBLTeZoYgjVHcQNkhrbLTPYyPBRPZwexGF1ulb6Fudu7wdv08/JkqUR2iFZLX3BEY0FQ4yd9LRQ==}
 
   '@humanfs/core@0.19.2':
     resolution: {integrity: sha512-UhXNm+CFMWcbChXywFwkmhqjs3PRCmcSa/hfBgLIb7oQ5HNb1wS0icWsGtSAUNgefHeI+eBrA8I1fxmbHsGdvA==}
@@ -2488,6 +2494,8 @@ snapshots:
       levn: 0.4.1
 
   '@exodus/bytes@1.15.1': {}
+
+  '@fontsource/sanchez@5.2.8': {}
 
   '@humanfs/core@0.19.2':
     dependencies:

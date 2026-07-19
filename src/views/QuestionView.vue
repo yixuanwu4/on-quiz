@@ -39,18 +39,47 @@ function answerQuestion(answer: Answer) {
 
 <template>
   <section v-if="question">
-    <span>Question {{ question.id + 1 }}</span>
     <h1>{{ question.copy }}</h1>
 
-    <button
-      v-for="answer in question.answers"
-      :key="answer.copy"
-      type="button"
-      @click="answerQuestion(answer)"
-    >
-      {{ answer.copy }}
-    </button>
+    <div>
+      <button
+        v-for="answer in question.answers"
+        :key="answer.copy"
+        type="button"
+        @click="answerQuestion(answer)"
+      >
+        {{ answer.copy }}
+      </button>
+    </div>
   </section>
 
   <p v-else>Question not found.</p>
 </template>
+
+<style scoped>
+section {
+  display: flex;
+  margin-block-start: 10rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 10rem;
+  padding-inline: 1rem;
+}
+
+div {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+
+  button {
+    display: block;
+    padding: 1.5rem 3rem;
+    background: transparent;
+    border: 1px solid var(--color-white-background);
+    color: var(--color-white-background);
+    flex: 1;
+    font-size: 1.6rem;
+    cursor: pointer;
+  }
+}
+</style>
