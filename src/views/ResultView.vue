@@ -28,7 +28,7 @@ const recommendationCopy = computed(() => {
     return 'Based on your selection we have found your shoe recommendations.'
   }
 
-  return `Based on your selection we've decided on the ${recommendedShoes.value.join(' and ')}! Enjoy the 30 day trial!`
+  return `Based on your selection we've decided on the ${recommendedShoes.value.map((shoe) => shoe?.name).join(' and ')}! Enjoy the 30 day trial!`
 })
 </script>
 

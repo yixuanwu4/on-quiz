@@ -68,5 +68,8 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <main>Loading...</main>
+  <main>
+    <img src="@/assets/loader.gif" alt="Loading..." class="loading-spinner" />
+    <p>We're running to get your results.</p>
+  </main>
 </template>
