@@ -76,6 +76,23 @@ watch([isLoading, firstQuestion, () => route.name], ([loading, question, routeNa
   <main>
     <p v-if="isLoading">Loading quiz...</p>
     <p v-else-if="error">{{ error }}</p>
-    <RouterView v-else />
+    <template v-else>
+      <p class="hint">Try On Quiz<br />30 Days Risk Free</p>
+      <RouterView />
+    </template>
   </main>
 </template>
+
+<style scoped>
+main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background-color: var(--color-black-background);
+  color: var(--color-white-text);
+  padding-block-start: 2rem;
+}
+.hint {
+  text-align: center;
+}
+</style>

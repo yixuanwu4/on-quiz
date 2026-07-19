@@ -9,8 +9,8 @@ import {
   type QuizResult,
 } from '@/quiz'
 
-const MIN_LOADING_TIME = 2000
-const MAX_LOADING_TIME = 6000
+const MIN_LOADING_TIME = 20000
+const MAX_LOADING_TIME = 60000
 
 const router = useRouter()
 const quizContext = inject(quizContextKey)
@@ -68,8 +68,18 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <main>
+  <section>
     <img src="@/assets/loader.gif" alt="Loading..." class="loading-spinner" />
     <p>We're running to get your results.</p>
-  </main>
+  </section>
 </template>
+
+<style scoped>
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+</style>
